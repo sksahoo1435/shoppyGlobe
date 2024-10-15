@@ -6,19 +6,24 @@ import Cart from './components/cart/Cart';
 import NotFound from './components/NotFound';
 import Header from './components/Header/Header';
 
+// layout for the entire application.
+
 const Layout = () => {
   return (
-    <>
+    <div className='layout_container' style={{width:"98vw"}}>
       <Header />
-      <Outlet />
-    </>
+      <main style={{marginTop:"80px"}}>
+        <Outlet />
+      </main>
+    </div>
   );
 };
 
+// routers of the components
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />, 
+    element: <Layout />,
     children: [
       {
         path: "/",

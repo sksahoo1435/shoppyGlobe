@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+// custom hooks for fetch all the product.
 
 export const fetchProducts = () => {
   const [products, setProducts] = useState([]);

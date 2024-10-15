@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+// custom hooks for fetch details of the product using id.
 
 export const fetchProductDetail = (id) => {
   const [product, setProduct] = useState(null);
