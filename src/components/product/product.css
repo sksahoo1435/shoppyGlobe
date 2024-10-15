@@ -262,6 +262,11 @@
         max-width: 100%;
     }
 
+    .product_detail_container {
+        flex-direction: column;
+        gap: 5px;
+    }
+
     .product_card {
         width: 100%;
     }

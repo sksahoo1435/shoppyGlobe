@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import ProductList from './components/product/ProductList';
-import ProductDetail from './components/product/ProductDetail';
-import Cart from './components/cart/Cart';
-import NotFound from './components/NotFound';
 import Header from './components/Header/Header';
+
+
+// Lazy load components
+const ProductList = lazy(() => import('./components/product/ProductList'));
+const ProductDetail = lazy(() => import('./components/product/ProductDetail'));
+const Cart = lazy(() => import('./components/cart/Cart'));
+const NotFound = lazy(() => import('./components/NotFound'));
 
 // layout for the entire application.
 
@@ -19,7 +22,7 @@ const Layout = () => {
   );
 };
 
-// routers of the components
+// Routers of the components
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,19 +30,35 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <ProductList />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProductList />
+          </Suspense>
+        ),
       },
       {
         path: "/product/:id",
-        element: <ProductDetail />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProductDetail />
+          </Suspense>
+        ),
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Cart />
+          </Suspense>
+        ),
       },
       {
         path: "*",
-        element: <NotFound />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <NotFound />
+          </Suspense>
+        ),
       },
     ],
   },
